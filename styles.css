@@ -1,0 +1,268 @@
+﻿:root {
+  --bg: #050814;
+  --bg-soft: #0b1220;
+  --card: #101a30;
+  --card-2: #0e1830;
+  --text: #f3f7ff;
+  --muted: #9db0d3;
+  --accent: #50d4ff;
+  --accent-2: #2478ff;
+  --danger: #ff5c7a;
+  --border: #22355a;
+  --ok: #73d38f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Noto Sans", sans-serif;
+  color: var(--text);
+  background: linear-gradient(180deg, var(--bg), #050a18 45%, #04060f);
+  min-height: 100vh;
+}
+
+.bg-glow {
+  position: fixed;
+  inset: -20vh -20vw auto;
+  height: 35vh;
+  background: radial-gradient(circle at 20% 20%, rgba(80, 212, 255, 0.25), transparent 55%),
+              radial-gradient(circle at 80% 10%, rgba(36, 120, 255, 0.2), transparent 50%);
+  pointer-events: none;
+}
+
+.app {
+  width: min(760px, 94vw);
+  margin: 1rem auto 2rem;
+  display: grid;
+  gap: 0.9rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(17, 28, 51, 0.93), rgba(12, 21, 40, 0.96));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(1.3rem, 3.5vw, 1.9rem);
+}
+
+h2 {
+  font-size: 1.1rem;
+}
+
+p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
+.timer-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 99px;
+  background: rgba(157, 176, 211, 0.2);
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.badge.running {
+  color: #05122a;
+  background: var(--ok);
+}
+
+.countdown {
+  font-size: clamp(2.2rem, 11vw, 4rem);
+  line-height: 1;
+  margin: 0.7rem 0 0.9rem;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+}
+
+.inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+input {
+  color: var(--text);
+  background: var(--card-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.55rem 0.65rem;
+}
+
+.actions {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+button {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0.6rem 0.7rem;
+  color: #021028;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.ghost {
+  color: var(--text);
+  background: transparent;
+  border-color: var(--border);
+}
+
+button:hover {
+  filter: brightness(1.06);
+}
+
+.stat-grid {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.stat-grid article {
+  background: rgba(13, 24, 48, 0.85);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.stat-grid span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stat-grid strong {
+  font-size: 1.1rem;
+}
+
+.add-site-form {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.55rem;
+}
+
+.hint {
+  margin-top: 0.6rem;
+  font-size: 0.88rem;
+}
+
+.block-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.block-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.7rem;
+  background: rgba(13, 24, 48, 0.8);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.6rem 0.75rem;
+}
+
+.block-item button {
+  background: transparent;
+  color: var(--danger);
+  border-color: var(--danger);
+  padding: 0.3rem 0.55rem;
+}
+
+.site-checker {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.warning {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 8, 16, 0.9);
+  display: grid;
+  place-items: center;
+  z-index: 20;
+}
+
+.warning.hidden {
+  display: none;
+}
+
+.warning-card {
+  width: min(420px, 90vw);
+  border: 1px solid var(--danger);
+  background: #150b14;
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.warning-card h2 {
+  color: #ff9bb2;
+}
+
+@media (max-width: 520px) {
+  .app {
+    width: 95vw;
+    margin-top: 0.65rem;
+  }
+
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .inputs,
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+}

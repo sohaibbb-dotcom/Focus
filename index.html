@@ -1,0 +1,103 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1220" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="Focus App PWA with timer, blocker list, and streaks." />
+  <title>Focus App</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <main class="app">
+    <header class="header card">
+      <div>
+        <h1>Focus App</h1>
+        <p>Stay focused. Block distractions. Build streaks.</p>
+      </div>
+      <button id="install-btn" class="ghost" hidden>Install</button>
+    </header>
+
+    <section class="card timer">
+      <div class="timer-head">
+        <h2 id="mode-label">Focus</h2>
+        <span id="running-badge" class="badge">Paused</span>
+      </div>
+
+      <p id="countdown" class="countdown">25:00</p>
+
+      <div class="inputs">
+        <label>
+          Focus (min)
+          <input id="focus-minutes" type="number" min="5" max="180" step="1" value="25" />
+        </label>
+        <label>
+          Break (min)
+          <input id="break-minutes" type="number" min="1" max="60" step="1" value="5" />
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="start-btn">Start</button>
+        <button id="pause-btn" class="ghost">Pause</button>
+        <button id="reset-btn" class="ghost">Reset</button>
+      </div>
+    </section>
+
+    <section class="card dashboard">
+      <h2>Focus Dashboard</h2>
+      <div class="stat-grid">
+        <article>
+          <span>Today Focus Time</span>
+          <strong id="today-focus">0h 0m</strong>
+        </article>
+        <article>
+          <span>Sessions Completed</span>
+          <strong id="today-sessions">0</strong>
+        </article>
+        <article>
+          <span>Weekly Focus Hours</span>
+          <strong id="weekly-hours">0.0h</strong>
+        </article>
+        <article>
+          <span>Daily Streak</span>
+          <strong id="streak-count">0 days</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="card blocker">
+      <h2>Website Block List</h2>
+      <form id="block-form" class="add-site-form">
+        <input id="site-input" type="text" placeholder="youtube.com" required />
+        <button type="submit">Add</button>
+      </form>
+      <p class="hint">During active focus sessions, blocked domains trigger a warning in the app checker below.</p>
+      <ul id="block-list" class="block-list"></ul>
+
+      <div class="site-checker">
+        <label>
+          Check a site while focusing
+          <input id="site-check-input" type="url" placeholder="https://www.youtube.com" />
+        </label>
+        <button id="check-site-btn" class="ghost" type="button">Open</button>
+      </div>
+    </section>
+  </main>
+
+  <section id="warning-screen" class="warning hidden" aria-live="assertive">
+    <div class="warning-card">
+      <h2>Blocked During Focus</h2>
+      <p id="warning-text">This site is on your blocked list.</p>
+      <button id="close-warning-btn">Back to Focus</button>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
